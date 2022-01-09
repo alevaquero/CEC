@@ -32,8 +32,8 @@ private:
 	bool Transmit(int sourceAddress, int targetAddress, const unsigned char* buffer, unsigned int count);
 
 private:
-	bool _monitorMode;
 	bool _promiscuous;
+	bool _monitorMode;
 
 	// CEC locical address handling
 	typedef enum {
