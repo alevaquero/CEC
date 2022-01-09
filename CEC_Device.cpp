@@ -1,16 +1,16 @@
 #include "CEC_Device.h"
 
 CEC_Device::CEC_Device() :
-	_monitorMode(true),
 	_promiscuous(false),
+	_monitorMode(true),
 	_logicalAddress(-1),
-	_state(CEC_IDLE),
 	_receiveBufferBits(0),
 	_transmitBufferBytes(0),
-	_amLastTransmittor(false),
-	_lineSetTime(0),
 	_bitStartTime(0),
-	_waitTime(0)
+	_lineSetTime(0),
+	_waitTime(0),
+	_amLastTransmittor(false),
+	_state(CEC_IDLE)
 {
 }
 
