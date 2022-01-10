@@ -99,6 +99,8 @@ private:
 		CEC_XMIT_ACK_TEST,
 		CEC_XMIT_ACK_WAIT,
 		CEC_XMIT_ACK2,
+		
+		CEC_ALE,
 	} CEC_STATE;
 
 	enum {
