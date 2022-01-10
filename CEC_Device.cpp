@@ -50,7 +50,8 @@ void CEC_Device::Initialize(int physicalAddress, CEC_DEVICE_TYPE type, bool prom
 /// acknowledgements and arbitration
 ///
 
-void CEC_Device::Run()
+// void CEC_Device::Run()
+CEC_STATE CEC_Device::Run()
 {
 	unsigned long time = micros();
 	unsigned long difftime = time - _lineSetTime;
