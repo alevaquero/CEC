@@ -57,13 +57,13 @@ CEC_Device::CEC_STATE CEC_Device::Run()
 	unsigned long difftime = time - _lineSetTime;
 	if (difftime < (_lastLineState ? CEC_MAX_RISE_TIME : CEC_MAX_FALL_TIME))
 		// give enough time for the line to settle before sampling it
-		return CEC_ALE;
+		return CEC_IDLE;
 
 	bool currentLineState = LineState();
 	difftime = time - _bitStartTime;
 	if (currentLineState == _lastLineState && _waitTime > difftime)
 		// No line transition and wait time not elapsed; nothing to do
-		return CEC_ALE;
+		return CEC_IDLE;
 
 	if (currentLineState != _lastLineState &&
 	    _state >= CEC_XMIT_WAIT && _state != CEC_XMIT_ACK_TEST && _state != CEC_XMIT_ACK_WAIT)
