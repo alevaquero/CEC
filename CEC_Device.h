@@ -42,7 +42,7 @@ public:
 		CEC_XMIT_ACK_WAIT,
 		CEC_XMIT_ACK2,
 		
-		CEC_ALE,
+// 		CEC_ALE,
 	} CEC_STATE;
 	
 public:
