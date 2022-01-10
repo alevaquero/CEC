@@ -15,6 +15,36 @@ public:
 		CDT_AUDIO_SYSTEM,
 	} CEC_DEVICE_TYPE;
 
+	// State machine
+	typedef enum {
+		CEC_IDLE,
+
+		CEC_RCV_STARTBIT1,
+		CEC_RCV_STARTBIT2,
+		CEC_RCV_DATABIT1,
+		CEC_RCV_DATABIT2,
+		CEC_RCV_EOM1,
+		CEC_RCV_EOM2,
+		CEC_RCV_ACK_SENT,
+		CEC_RCV_ACK1,
+		CEC_RCV_ACK2,
+		CEC_RCV_LINEERROR,
+
+		CEC_XMIT_WAIT,
+		CEC_XMIT_STARTBIT1,
+		CEC_XMIT_STARTBIT2,
+		CEC_XMIT_DATABIT1,
+		CEC_XMIT_DATABIT2,
+		CEC_XMIT_EOM1,
+		CEC_XMIT_EOM2,
+		CEC_XMIT_ACK1,
+		CEC_XMIT_ACK_TEST,
+		CEC_XMIT_ACK_WAIT,
+		CEC_XMIT_ACK2,
+		
+		CEC_ALE,
+	} CEC_STATE;
+	
 public:
 	CEC_Device();
 	void Initialize(int physicalAddress, CEC_DEVICE_TYPE type, bool promiscuous = false, bool monitorMode = false);
@@ -73,35 +103,35 @@ private:
 	unsigned int _transmitBufferBytes;
 	unsigned int _transmitBufferBitIdx;
 
-	// State machine
-	typedef enum {
-		CEC_IDLE,
+// 	// State machine
+// 	typedef enum {
+// 		CEC_IDLE,
 
-		CEC_RCV_STARTBIT1,
-		CEC_RCV_STARTBIT2,
-		CEC_RCV_DATABIT1,
-		CEC_RCV_DATABIT2,
-		CEC_RCV_EOM1,
-		CEC_RCV_EOM2,
-		CEC_RCV_ACK_SENT,
-		CEC_RCV_ACK1,
-		CEC_RCV_ACK2,
-		CEC_RCV_LINEERROR,
+// 		CEC_RCV_STARTBIT1,
+// 		CEC_RCV_STARTBIT2,
+// 		CEC_RCV_DATABIT1,
+// 		CEC_RCV_DATABIT2,
+// 		CEC_RCV_EOM1,
+// 		CEC_RCV_EOM2,
+// 		CEC_RCV_ACK_SENT,
+// 		CEC_RCV_ACK1,
+// 		CEC_RCV_ACK2,
+// 		CEC_RCV_LINEERROR,
 
-		CEC_XMIT_WAIT,
-		CEC_XMIT_STARTBIT1,
-		CEC_XMIT_STARTBIT2,
-		CEC_XMIT_DATABIT1,
-		CEC_XMIT_DATABIT2,
-		CEC_XMIT_EOM1,
-		CEC_XMIT_EOM2,
-		CEC_XMIT_ACK1,
-		CEC_XMIT_ACK_TEST,
-		CEC_XMIT_ACK_WAIT,
-		CEC_XMIT_ACK2,
+// 		CEC_XMIT_WAIT,
+// 		CEC_XMIT_STARTBIT1,
+// 		CEC_XMIT_STARTBIT2,
+// 		CEC_XMIT_DATABIT1,
+// 		CEC_XMIT_DATABIT2,
+// 		CEC_XMIT_EOM1,
+// 		CEC_XMIT_EOM2,
+// 		CEC_XMIT_ACK1,
+// 		CEC_XMIT_ACK_TEST,
+// 		CEC_XMIT_ACK_WAIT,
+// 		CEC_XMIT_ACK2,
 		
-		CEC_ALE,
-	} CEC_STATE;
+// 		CEC_ALE,
+// 	} CEC_STATE;
 
 	enum {
 		STARTBIT_TIME_LOW   = 3700, // 3.7ms
